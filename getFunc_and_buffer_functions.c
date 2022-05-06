@@ -1,11 +1,11 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * get_func - returns needed function
  * @i: identifier for function
  * Return: Pointer to needed function
  */
-char* (*get_func(char i))(va_list)
+char *(*get_func(char i))(va_list)
 {
 	int k = 0;
 
@@ -18,8 +18,7 @@ char* (*get_func(char i))(va_list)
 		{'R', rot13},
 		{'r', rev_string},
 		{'o', itoOctal},
-		{'\0', NULL}
-	};
+		{'\0', NULL}};
 
 	while (keys[k].id != '\0')
 	{
@@ -55,7 +54,8 @@ void write_buffer(char *buffer, int len, va_list list)
 	char *buff;
 
 	buff = realloc(buffer, len); /* realloc to correct size */
-	write(1, buff, len); /* print */
+	write(1, buff, len);		 /* print */
 
-	free(buff); va_end(list);
+	free(buff);
+	va_end(list);
 }

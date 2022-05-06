@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * rev_string - reverses a string
@@ -8,7 +8,7 @@
 
 char *rev_string(va_list list)
 {
-        char *rev;
+	char *rev;
 	char *str;
 	int i = 0, len, j;
 
@@ -22,7 +22,7 @@ char *rev_string(va_list list)
 	if (rev == NULL)
 		return (NULL);
 
-	for(j = (len - 1); j >= 0; j--) /* store reverse in new variable */
+	for (j = (len - 1); j >= 0; j--) /* store reverse in new variable */
 	{
 		rev[i++] = str[j];
 	}

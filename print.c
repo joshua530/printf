@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * check_buffer_overflow - if writing over buffer space,
@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 	int len = 0, total_len = 0, i = 0, j = 0;
 	va_list list;
 	char *buffer, *str;
-	char* (*f)(va_list);
+	char *(*f)(va_list);
 
 	if (format == NULL)
 		return (-1);
@@ -64,11 +64,13 @@ int _printf(const char *format, ...)
 			else
 			{
 				f = get_func(format[i]); /* grab function */
-				if (f == NULL)  /* handle fake id */
+				if (f == NULL)			 /* handle fake id */
 				{
 					len = check_buffer_overflow(buffer, len);
-					buffer[len++] = '%'; total_len++;
-					buffer[len++] = format[i]; total_len++;
+					buffer[len++] = '%';
+					total_len++;
+					buffer[len++] = format[i];
+					total_len++;
 				}
 				else /* return string, copy to buffer */
 				{
@@ -90,11 +92,13 @@ int _printf(const char *format, ...)
 					{
 						len = check_buffer_overflow(buffer, len);
 						buffer[len++] = str[j];
-						total_len++; j++;
+						total_len++;
+						j++;
 					}
 					free(str);
 				}
-			} i++;
+			}
+			i++;
 		}
 	}
 	write_buffer(buffer, len, list);
